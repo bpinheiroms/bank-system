@@ -5,7 +5,10 @@ import {
   FormErrorMessage,
   FormLabel,
   Input as ChakraInput,
+  InputGroup,
+  InputLeftElement,
   InputProps as ChakraInputProps,
+  InputRightElement,
 } from "@chakra-ui/react";
 import NumberFormat from "react-number-format";
 
@@ -25,21 +28,26 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
 
       {isCurrency ? (
-        <NumberFormat
-          thousandSeparator={true}
-          decimalSeparator="."
-          displayType="input"
-          name={name}
-          style={{
-            width: `100%`,
-            outline: `2px solid transparent`,
-            borderBottom: `1px solid #3182ce`,
-            outlineOffset: `2px`,
-            paddingBottom: `10px`
-          }}
-          id={name}
-          {...rest}
-        />
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            color="gray.300"
+            fontSize="1.2em"
+            children="$"
+          />
+          <ChakraInput
+            name={name}
+            id={name}
+            variant="flushed"
+            focusBorderColor="blue.500"
+            bgColor="white"
+            borderColor="blue.500"
+            size="lg"
+            type="number"
+            ref={ref}
+            {...rest}
+          />
+        </InputGroup>
       ) : (
         <ChakraInput
           name={name}

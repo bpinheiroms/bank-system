@@ -18,7 +18,10 @@ type PurchaseFormData = {
 };
 
 const purchaseSchema = yup.object().shape({
-  amount: yup.string().required("Required amount"),
+  amount: yup
+    .string()
+    .required("Required amount")
+    .matches(/^(\d*\,)?\d+$/, "Only with `,` ! Ex: 1,000"),
   description: yup.string().required("Required description"),
 });
 
@@ -46,7 +49,7 @@ const Purchase = () => {
     setPurchaseSend({ ...value, date: startDate });
   };
 
-  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  const CustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
     <Flex onClick={onClick} align="flex-end">
       <Text
         fontSize="2xl"

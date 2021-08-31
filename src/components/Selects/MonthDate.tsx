@@ -8,7 +8,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 const MonthDate = () => {
   const [startDate, setStartDate] = useState(new Date());
 
-  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  const CustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
     <button>
       <Flex onClick={onClick} align="flex-end">
         <Text fontSize="2xl" color="white" size="lg" ref={ref}>

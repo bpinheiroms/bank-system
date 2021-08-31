@@ -18,7 +18,10 @@ type FormData = {
 };
 
 const purchaseSchema = yup.object().shape({
-  amount: yup.string().required("Required amount"),
+  amount: yup
+    .string()
+    .required("Required amount")
+    .matches(/^(\d*\,)?\d+$/, "Only with `,` ! Ex: 1,000"),
   description: yup.string().required("Required description"),
 });
 
@@ -156,7 +159,7 @@ const CheckDeposit = () => {
 
         <Button
           type="submit"
-          // disabled={!checkUrl}
+          disabled={!checkUrl}
           mt="6"
           colorScheme="blue"
           size="lg"
