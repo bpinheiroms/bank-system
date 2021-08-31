@@ -38,7 +38,6 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
             paddingBottom: `10px`
           }}
           id={name}
-          ref={ref}
           {...rest}
         />
       ) : (
